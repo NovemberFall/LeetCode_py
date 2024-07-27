@@ -1,22 +1,22 @@
-# Implementing "Max Heap"
+# Implementing "Max PriorityQueue"
 import sys
 
 
 class MaxHeap:
     def __init__(self, heapSize):
         # Create a complete binary tree using an array
-        # Then use the binary tree to construct a Heap
+        # Then use the binary tree to construct a PriorityQueue
         self.heapSize = heapSize
         # the number of elements is needed when instantiating an array
         # heapSize records the size of the array
         self.maxheap = [0] * (heapSize + 1)
-        # realSize records the number of elements in the Heap
+        # realSize records the number of elements in the PriorityQueue
         self.realSize = 0
 
     # Function to add an element
     def add(self, element):
         self.realSize += 1
-        # If the number of elements in the Heap exceeds the preset heapSize
+        # If the number of elements in the PriorityQueue exceeds the preset heapSize
         # print "Added too many elements" and return
         if self.realSize > self.heapSize:
             print("Added too many elements!")
@@ -41,22 +41,22 @@ class MaxHeap:
             index = parent
             parent = index // 2
 
-    # Get the top element of the Heap
+    # Get the top element of the PriorityQueue
     def peek(self):
         return self.maxheap[1]
 
-    # Delete the top element of the Heap
+    # Delete the top element of the PriorityQueue
     def pop(self):
-        # If the number of elements in the current Heap is 0,
+        # If the number of elements in the current PriorityQueue is 0,
         # print "Don't have any elements" and return a default value
         if self.realSize < 1:
             print("Don't have any element!")
             return -sys.maxsize
         else:
-            # When there are still elements in the Heap
+            # When there are still elements in the PriorityQueue
             # self.realSize >= 1
             removeElement = self.maxheap[1]
-            # Put the last element in the Heap to the top of Heap
+            # Put the last element in the PriorityQueue to the top of PriorityQueue
             self.maxheap[1] = self.maxheap[self.realSize]
             self.realSize -= 1
             index = 1
@@ -80,7 +80,7 @@ class MaxHeap:
                     break
             return removeElement
 
-    # return the number of elements in the Heap
+    # return the number of elements in the PriorityQueue
     def size(self):
         return self.realSize
 

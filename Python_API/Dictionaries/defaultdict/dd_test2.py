@@ -42,3 +42,5 @@ for student, course in students:
 
 print(students_courses)
 # Output: defaultdict(<class 'list'>, {'Alice': ['Math', 'Science'], 'Bob': ['Science', 'Math']})
+
+print(students_courses['Jake']) # []

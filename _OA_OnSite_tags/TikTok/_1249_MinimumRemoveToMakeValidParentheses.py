@@ -21,6 +21,7 @@ class Solution:
                 sb.append(c)
 
         print("".join(sb))  # Output intermediate result: le(e(t(co)de)
+        print(cnt)  # 1
 
         # Backward pass to remove invalid opening parentheses '('
         filtered = []
@@ -36,5 +37,5 @@ class Solution:
 
 if __name__ == "__main__":
     soln = Solution()
-    s = "le(e(t(co)de)"
+    s = ")le(e(t(co)de)"
     print(soln.minRemoveToMakeValid(s))

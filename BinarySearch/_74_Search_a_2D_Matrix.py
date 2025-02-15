@@ -1,12 +1,9 @@
-class Solution(object):
-    def search(self, matrix, target):
-        """
-        input: int[][] matrix, int target
-        return: int[]
-        """
-        # write your solution here
+from typing import List
+
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
         if len(matrix) == 0 or len(matrix[0]) == 0:
-            return [-1, -1]
+            return False
         left = 0
         right = len(matrix) * len(matrix[0]) - 1
         while left <= right:
@@ -14,9 +11,9 @@ class Solution(object):
             row = mid // len(matrix[0])
             col = mid % len(matrix[0])
             if matrix[row][col] == target:
-                return [row, col]
+                return True
             elif matrix[row][col] < target:
                 left = mid + 1
             else:
                 right = mid - 1
-        return [-1, -1]
+        return False

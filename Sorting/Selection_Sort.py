@@ -4,19 +4,14 @@ from typing import List
 class SS_Solution:
     def selection_sort(self, arr: List[int]) -> None:
         n = len(arr)
-        #  (could do i < n-1 because single element is also min element)
+        # because the last element is the minimum
         for i in range(n - 1):
-            #  assume the min is the first element
             min_idx = i
-            #  test against elements after i to find the smallest
             for j in range(i + 1, n):
-                if arr[j] < arr[min_idx]:  # if this element is less, then it is the new minimum
+                if arr[min_idx] > arr[j]:
                     min_idx = j
-            if min_idx != i:
-                self.swap(arr, i, min_idx)
-
-    def swap(self, arr: List[int], i: int, j: int) -> None:
-        arr[i], arr[j] = arr[j], arr[i]
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+        return arr
 
 
 # Test function

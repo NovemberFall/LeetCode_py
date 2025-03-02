@@ -1,6 +1,5 @@
 from collections import Counter
 
-
 class Solution:
     def makeStringGood(self, s: str) -> int:
         self.freq = Counter(s)
@@ -49,3 +48,4 @@ class Solution:
         # Store result in memo
         self.memo[(i, expectedOcc, leftoverChars)] = result
         return result
+

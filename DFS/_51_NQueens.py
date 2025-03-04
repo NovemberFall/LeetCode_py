@@ -4,10 +4,7 @@ from typing import List
 class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         res = []
-        board = [['' for _ in range(n)] for _ in range(n)]
-        for i in range(n):
-            for j in range(n):
-                board[i][j] = '.'
+        board = [['.' for _ in range(n)] for _ in range(n)]
 
         self.dfs(res, board, n, 0)
         return res

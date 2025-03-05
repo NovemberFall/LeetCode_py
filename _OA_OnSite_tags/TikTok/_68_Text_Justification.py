@@ -8,35 +8,27 @@ class Solution:
         line_length = 0
 
         for word in words:
-            # Check if adding this word would exceed the maxWidth
-            if line_length + len(word) + (len(line_words) - 1) >= maxWidth:
-                # If the current line is full, justify the text
+            # Check if adding this word would exceed maxWidth
+            if line_length + len(word) + (len(line_words) - 1) >=maxWidth:
+                # Distribute spaces evenly
+                total_spaces = maxWidth - line_length
                 if len(line_words) == 1:
-                    # Special case: only one word in the line (left-aligned)
-                    res.append(line_words[0] + ' ' * (maxWidth - len(line_words[0])))
+                    res.append(line_words[0] + ' ' * total_spaces)
                 else:
-                    # Distribute spaces evenly
-                    total_spaces = maxWidth - line_length
                     space_between_words = total_spaces // (len(line_words) - 1)
                     extra_spaces = total_spaces % (len(line_words) - 1)
 
-                    justified_line = line_words[0]
-                    for i in range(1, len(line_words)):
-                        if i <= extra_spaces:
-                            spaces = ' ' * (space_between_words + 1)
-                        else:
-                            spaces = ' ' * (space_between_words)
-                        justified_line += spaces + line_words[i]
+                    for i in range(extra_spaces):
+                        line_words[i] += ' '
 
+                    justified_line = (' ' * space_between_words).join(line_words)
                     res.append(justified_line)
 
-                # Reset for the next line
-                line_words = [word]
-                line_length = len(word)
-            else:
-                # Add word to the current line
-                line_words.append(word)
-                line_length += len(word)
+                line_words.clear()  # Instead of resetting, just clear it
+                line_length = 0
+
+            line_words.append(word)
+            line_length += len(word)
 
         # Handle the last line (left-justified)
         last_line = ' '.join(line_words)

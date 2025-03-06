@@ -9,7 +9,7 @@ class Solution:
 
         for word in words:
             # Check if adding this word would exceed maxWidth
-            if line_length + len(word) + (len(line_words) - 1) >=maxWidth:
+            if line_length + len(word) + (len(line_words) - 1) >= maxWidth:
                 # Distribute spaces evenly
                 total_spaces = maxWidth - line_length
                 if len(line_words) == 1:

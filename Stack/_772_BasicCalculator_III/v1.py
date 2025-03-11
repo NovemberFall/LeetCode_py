@@ -14,8 +14,11 @@ class Solution:
                     stack.append(self.evaluate(previous_operator, stack.pop(), cur))
                 else:
                     stack.append(self.evaluate(previous_operator, cur))
+                cur = 0
+                previous_operator = c
+        return sum(stack)
 
-    def evaluate(self, operator, x, y = 0):
+    def evaluate(self, operator, x, y):
         if operator == "+":
             return x
         if operator == "-":

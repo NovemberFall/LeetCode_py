@@ -14,3 +14,10 @@ class Solution(object):
         # write your solution here
         if root is None:
             return -float('inf')
+
+        # when it is a leaf node
+        if root.left is None and root.right is None:
+            return root.val
+        leftTree = self.maxPathSumLeafToRoot(root.left)
+        rightTree = self.maxPathSumLeafToRoot(root.right)
+        return max(leftTree, rightTree) + root.val

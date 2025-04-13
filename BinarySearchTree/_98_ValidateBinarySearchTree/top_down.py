@@ -16,9 +16,7 @@ class Solution:
         if root is None:
             return True
 
-        x = root.val
+        if not (left < root.val < right):
+            return False
 
-        if left < x < right:
-            return self.isBST(root.left, left, x) and self.isBST(root.right, x, right)
-
-        return False
+        return self.isBST(root.left, left, root.val) and self.isBST(root.right, root.val, right)

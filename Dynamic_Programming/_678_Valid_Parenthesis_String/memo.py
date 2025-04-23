@@ -20,9 +20,8 @@ class Solution:
             isValid = self.dfs(index + 1, openCount - 1, str, dp)
         else:
             isValid = self.dfs(index + 1, openCount + 1, str, dp) or \
-            self.dfs(index + 1, openCount - 1, str, dp) or \
+                      self.dfs(index + 1, openCount - 1, str, dp) or \
                       self.dfs(index + 1, openCount, str, dp)
 
         dp[index][openCount] = isValid
         return isValid
-

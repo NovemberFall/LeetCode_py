@@ -7,7 +7,8 @@ class Solution:
             return -1
 
         cache = {}
-        def dfs(i:int, d:int, cur_max:int) -> int:
+
+        def dfs(i: int, d: int, cur_max: int) -> int:
             if i == len(jobDifficulty):
                 return 0 if d == 0 else float("inf")
             if d == 0:

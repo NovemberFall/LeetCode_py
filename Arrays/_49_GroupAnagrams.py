@@ -2,7 +2,7 @@ from typing import List
 
 class _49_groupAnagrams:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        res = {} # mapping charCount to List of Anagrams
+        res = {} # mapping charCount to __List of Anagrams
 
         for s in strs:
             count = [0] * 26 # a ... z

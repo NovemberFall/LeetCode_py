@@ -3,7 +3,7 @@ from typing import List
 
 
 # class Solution:
-#     def kSmallestPairs(self, nums1: List[int], nums2: List[int], k: int) -> List[List[int]]:
+#     def kSmallestPairs(self, nums1: __List[int], nums2: __List[int], k: int) -> __List[__List[int]]:
 #         max_heap = []
 #         for i in range(len(nums1)):
 #             for j in range(len(nums2)):

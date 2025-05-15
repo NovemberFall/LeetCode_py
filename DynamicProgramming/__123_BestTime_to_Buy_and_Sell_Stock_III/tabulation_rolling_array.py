@@ -21,10 +21,10 @@ class Solution:
                 # Update holding status:
                 # Option 1: do nothing, still holding from yesterday
                 # Option 2: buy today (only if not holding yesterday and have one less transaction)
-                dp[i][j][1] = max(dp[i - 1][j][1], dp[i - 1][j - 1][0] - prices[i - 1])
+                dp[i & 1][j][1] = max(dp[(i - 1) & 1][j][1], dp[(i - 1) & 1][j - 1][0] - prices[i - 1])
                 # Update not holding status:
                 # Option 1: do nothing, still not holding
                 # Option 2: sell today (must have held yesterday)
-                dp[i][j][0] = max(dp[i - 1][j][0], dp[i - 1][j][1] + prices[i - 1])
+                dp[i & 1][j][0] = max(dp[(i - 1) & 1][j][0], dp[(i - 1) & 1][j][1] + prices[i - 1])
         # Return the max profit at the end, after 2 transactions, not holding stock
-        return dp[n][2][0]
+        return dp[n & 1][2][0]

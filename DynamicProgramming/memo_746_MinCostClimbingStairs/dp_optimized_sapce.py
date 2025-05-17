@@ -9,4 +9,4 @@ class Solution:
             new_f = min(f1 + cost[i - 1], f0 + cost[i - 2])
             f0 = f1
             f1 = new_f
-        return new_f
+        return f1

@@ -27,11 +27,14 @@ class Solution:
 
                 # Option 2: Force a "good caption" block starting at i (length 3)
                 # All three characters must match `j`, so calculate cost to convert them
+                cost_block_3 = abs(s[i] - j) + abs(s[i + 1] - j) + abs(s[i + 2] - j)
+
+                # Then recursively solve the rest starting at position i + 3
+                # Try all possible characters for the next block and pick the minimum cost
                 min_next = float('inf')
                 for k in range(26):
                     min_next = min(min_next, dfs(i + 3, k))
 
-                cost_block_3 = abs(s[i] - j) + abs(s[i + 1] - j) + abs(s[i + 2] - j)
                 cost2 = cost_block_3 + min_next
                 return min(cost1, cost2)
             else:

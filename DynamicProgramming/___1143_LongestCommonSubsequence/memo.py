@@ -15,7 +15,7 @@ class Solution:
             return self.dp[i][j]
 
         if self.t1[i] == self.t2[j]:
-            # Include the current character and move to the next in both strings
+            # Include the current character and move to the next in both __strings
             self.dp[i][j] = 1 + self.dfs(i + 1, j + 1)
         else:
             # If characters don't match, explore two possibilities:

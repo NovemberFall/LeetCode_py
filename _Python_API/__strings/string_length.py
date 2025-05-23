@@ -6,7 +6,7 @@ print(length)  # Output: 13
 
 strings = ["apple", "banana", "kiwi", "date"]
 
-# Filtering strings that are longer than 4 characters
+# Filtering __strings that are longer than 4 characters
 long_strings = [s for s in strings if len(s) > 4]
 
 print(long_strings)  # Output: ['apple', 'banana']

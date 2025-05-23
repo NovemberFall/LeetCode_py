@@ -32,5 +32,5 @@ class Solution:
 
                 return min(cost1, cost2)
 
-        return dfs(0, 0)  # Start from the beginning of both strings
+        return dfs(0, 0)  # Start from the beginning of both __strings
 

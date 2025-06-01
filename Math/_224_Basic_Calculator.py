@@ -1,30 +1,39 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        self.index = 0
-        return self.evaluate(s + "+")
+        index = [0]
 
-    def evaluate(self, s: str) -> int:
-        stack = []
-        curNum = 0
-        lastOperator = '+'
-        while self.index < len(s):
-            curChar = s[self.index]
-            self.index += 1
-            if curChar == ' ':
-                continue
-            if curChar.isdigit():
-                curNum = curNum * 10 + int(curChar)
-            elif curChar == '(':
-                curNum = self.evaluate(s)
-            else:
-                if lastOperator == '+':
-                    stack.append(curNum)
-                elif lastOperator == '-':
-                    stack.append(-curNum)
-                lastOperator = curChar
-                curNum = 0
-                if curChar == ')':
+        def evaluate(s):
+            curNum = 0
+            stack = []
+            lastOperator = '+'
+            while index[0] < len(s):
+                ch = s[index[0]]
+                index[0] += 1
+                if ch == ' ':
+                    continue
+
+                if ch.isdigit():
+                    curNum = curNum * 10 + int(ch)
+                elif ch == '(':
+                    curNum = evaluate(s)
+                elif ch in "+-":
+                    if lastOperator == '+':
+                        stack.append(curNum)
+                    elif lastOperator == '-':
+                        stack.append(-curNum)
+                    lastOperator = ch
+                    curNum = 0
+                elif ch == ')':
                     break
 
-        return sum(stack)
+            # ✅ Final processing to handle the last number
+            if lastOperator == '+':
+                stack.append(curNum)
+            elif lastOperator == '-':
+                stack.append(-curNum)
+
+            return sum(stack)
+
+        return evaluate(s)
+
 

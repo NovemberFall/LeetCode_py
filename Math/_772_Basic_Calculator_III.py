@@ -1,34 +1,42 @@
 class Solution:
     def calculate(self, s: str) -> int:
-        self.index = 0
-        return self.evaluate(s + "+")
+        index = [0]
 
-    def evaluate(self, s: str) -> int:
-        stack = []
-        lastOperator = '+'
-        curNum = 0
-        while self.index < len(s):
-            curChar = s[self.index]
-            self.index += 1
-            if curChar == ' ':
-                continue
-            if curChar.isdigit():
-                curNum = curNum * 10 + int(curChar)
-            elif curChar == '(':
-                curNum = self.evaluate(s)
-            else:
-                if lastOperator == '+':
-                    stack.append(curNum)
-                elif lastOperator == '-':
-                    stack.append(-curNum)
-                elif lastOperator == '*':
-                    stack.append(stack.pop() * curNum)
-                elif lastOperator == '/':
-                    stack.append(int(stack.pop() / curNum))
+        def evaluate(s: str) -> int:
+            stack = []
+            lastOperator = '+'
+            curNum = 0
+            while index[0] < len(s):
+                curChar = s[index[0]]
+                index[0] += 1
+                if curChar == ' ':
+                    continue
+                if curChar.isdigit():
+                    curNum = curNum * 10 + int(curChar)
+                elif curChar == '(':
+                    curNum = evaluate(s)
+                elif curChar in "+-*/":
+                    if lastOperator == '+':
+                        stack.append(curNum)
+                    elif lastOperator == '-':
+                        stack.append(-curNum)
+                    elif lastOperator == '*':
+                        stack.append(stack.pop() * curNum)
+                    elif lastOperator == '/':
+                        stack.append(int(stack.pop() / curNum))
+                    lastOperator = curChar
+                    curNum = 0
+                elif curChar == ')':
+                    break;
 
-                lastOperator = curChar
-                curNum = 0
-                if curChar == ')':
-                    break
+            if lastOperator == '+':
+                stack.append(curNum)
+            elif lastOperator == '-':
+                stack.append(-curNum)
+            elif lastOperator == '*':
+                stack.append(stack.pop() * curNum)
+            elif lastOperator == '/':
+                stack.append(int(stack.pop() / curNum))
+            return sum(stack)
 
-        return sum(stack)
+        return evaluate(s + "+")

@@ -3,16 +3,16 @@ class Solution:
         res = ""
         for i in range(len(s)):
             # odd case
-            odd_str = self.dfs(s, i, i)
+            odd_str = self.extend(s, i, i)
             if len(odd_str) > len(res):
                 res = odd_str
             # even case
-            even_str = self.dfs(s, i, i + 1)
+            even_str = self.extend(s, i, i + 1)
             if len(even_str) > len(res):
                 res = even_str
         return res
 
-    def dfs(self, s, l, r) -> str:
+    def extend(self, s, l, r) -> str:
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1
             r += 1
